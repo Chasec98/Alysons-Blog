@@ -35,7 +35,7 @@
                 >
               </md-list-item>
 
-              <md-list-item to="destination">
+              <md-list-item to="/destinations">
                 <i class="material-icons">location_on</i>
                 <p>Destinations</p>
                 <md-tooltip md-direction="bottom"
@@ -100,7 +100,7 @@ export default {
       default: 0
     },
     transparent: {
-      type: Boolean, 
+      type: Boolean,
       default: true
     }
   },

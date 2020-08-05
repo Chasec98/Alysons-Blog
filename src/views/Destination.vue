@@ -5,27 +5,22 @@
         <div class="md-layout-item">
           <div class="image-wrapper">
             <div class="brand">
-              <h1>Posts</h1>
+              <h1>Destinations</h1>
             </div>
           </div>
         </div>
       </div>
     </parallax>
     <div class="main main-raised">
-      <div class="section section-basic">
-        <post/>
-      </div>
-    </div>
-  </div>
+        <div class="section section-basic">
+        </div>
+        </div>
+        </div>
 </template>
 <script>
-import post from '@/components/post.vue'
 export default {
   name: "index",
-  bodyClass: "index-page",
-  components:{
-    post
-  },
+  bodyClass: "index-page",  
   props: {
     image: {
       type: String,
