@@ -355,13 +355,13 @@
   }
 
   .index-page .brand h1 {
-    font-size: 4.3rem;
+    font-size: 4.5rem;
   }
 
   .index-page .brand h3 {
     max-width: 500px;
     line-height: normal;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   .nav-tabs {
@@ -372,6 +372,32 @@
     display: none !important;
   }
 }
+
+@media (max-width: 451px){
+  .index-page .brand h1 {
+    font-size: 4rem;
+  }
+
+  .index-page .brand h3 {
+    max-width: 500px;
+    line-height: normal;
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 780px){
+  .index-page .brand h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .index-page .brand h3 {
+    max-width: 500px;
+    line-height: normal;
+    font-size: 0.8rem;
+  }
+}
+
 @media (min-width: 768px){
   .hidden-md{
     display: none !important;
