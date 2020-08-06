@@ -6,6 +6,7 @@
           <div class="image-wrapper">
             <div class="brand">
               <h1>This is real, this is me</h1>
+              <h3>Find the inspiration to create the life you have always dreamed of right here, with your guide to all adventure activities, outdoor recreation, and plant-based eating for wherever you yearn to wander next!</h3>
             </div>
           </div>
         </div>
