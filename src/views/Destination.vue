@@ -12,19 +12,18 @@
       </div>
     </parallax>
     <div class="main main-raised">
-        <div class="section section-basic">
-        </div>
-        </div>
-        </div>
+      <div class="section section-basic"></div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
   name: "index",
-  bodyClass: "index-page",  
+  bodyClass: "index-page",
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/top.jpg")
+      default: require("@/assets/img/top-destination.jpg")
     }
   },
   data() {

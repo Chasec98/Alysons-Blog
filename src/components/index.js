@@ -6,12 +6,4 @@ import LoginCard from "./cards/LoginCard.vue";
 import Tabs from "./Tabs.vue";
 import Modal from "./Modal.vue";
 
-export {
-  Parallax,
-  Pagination,
-  Slider,
-  NavTabsCard,
-  LoginCard,
-  Tabs,
-  Modal
-};
+export { Parallax, Pagination, Slider, NavTabsCard, LoginCard, Tabs, Modal };

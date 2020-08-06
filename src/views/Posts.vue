@@ -13,27 +13,50 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-basic">
-        <post/>
+        <div v-for="data in posts" :key="data.id">
+        <post :post="data" />
+        </div>
+        <v-pagination></v-pagination>
       </div>
     </div>
   </div>
 </template>
 <script>
-import post from '@/components/post.vue'
+import post from "@/components/post.vue";
 export default {
   name: "index",
   bodyClass: "index-page",
-  components:{
+  components: {
     post
   },
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/top.jpg")
+      default: require("@/assets/img/top-post.jpg")
     }
   },
   data() {
-    return {};
+    return {
+      posts: [
+        {
+          id: 1,
+          title: "test title",
+          body: "test body",
+          tags: [
+            "travel"
+          ]
+        },
+        {
+          id: 2,
+          title: "test title",
+          body: "test body",
+          tags: [
+            "vegan",
+            "travel"
+          ]
+        }
+      ]
+    };
   },
   methods: {},
   computed: {
