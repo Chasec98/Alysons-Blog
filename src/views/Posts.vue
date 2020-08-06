@@ -13,7 +13,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-basic">
-        <div v-for="data in posts" :key="data.id">
+        <div v-for="data in posts.all" :key="data.id">
         <post :post="data" />
         </div>
         <v-pagination></v-pagination>
@@ -23,6 +23,7 @@
 </template>
 <script>
 import post from "@/components/post.vue";
+import {mapState, mapActions} from 'vuex'
 export default {
   name: "index",
   bodyClass: "index-page",
@@ -37,34 +38,20 @@ export default {
   },
   data() {
     return {
-      posts: [
-        {
-          id: 1,
-          title: "test title",
-          body: "test body",
-          tags: [
-            "travel"
-          ]
-        },
-        {
-          id: 2,
-          title: "test title",
-          body: "test body",
-          tags: [
-            "vegan",
-            "travel"
-          ]
-        }
-      ]
     };
   },
-  methods: {},
+  methods: {
+  },
   computed: {
     headerStyle() {
       return {
         backgroundImage: `url(${this.image})`
       };
-    }
+    },
+    ...mapState(['posts'])
+  },
+  created(){
+    this.$store.dispatch('posts/getPosts')
   }
 };
 </script>
