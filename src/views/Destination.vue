@@ -12,28 +12,30 @@
       </div>
     </parallax>
     <div class="main main-raised">
-        <GmapMap id="map" class="section section-basic"
-  :center="{lat:35, lng:-85}"
-  :zoom="5"
-  :options="{
-      mapTypeControl: false,
-      streetViewControl: false,
-    }"
-  map-type-id="terrain"
->
-<GmapMarker
-    :key="data.id"
-    v-for="data in posts.all"
-    :position="convertLocation(data.location)"
-    :clickable="true"
-    :draggable="false"
-  />
-</GmapMap>
+      <GmapMap
+        id="map"
+        class="section section-basic"
+        :center="{ lat: 35, lng: -85 }"
+        :zoom="5"
+        :options="{
+          mapTypeControl: false,
+          streetViewControl: false
+        }"
+        map-type-id="terrain"
+      >
+        <GmapMarker
+          :key="data.id"
+          v-for="data in posts.all"
+          :position="convertLocation(data.location)"
+          :clickable="true"
+          :draggable="false"
+        />
+      </GmapMap>
     </div>
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   //maps api key: AIzaSyDv2iOcgUp2L1yKsqJdcQjBnEs2idJkGzA
   //restrict access to this key in prod
@@ -51,11 +53,11 @@ export default {
     };
   },
   methods: {
-    convertLocation(location){
+    convertLocation(location) {
       return {
-        lat: location['ff'],
-        lng: location['df']
-      }
+        lat: location["ff"],
+        lng: location["df"]
+      };
     }
   },
   computed: {
@@ -64,15 +66,15 @@ export default {
         backgroundImage: `url(${this.image})`
       };
     },
-    ...mapState(['posts'])
+    ...mapState(["posts"])
   },
   created() {
-    this.$store.dispatch('posts/getPosts')
+    this.$store.dispatch("posts/getPosts");
   }
 };
 </script>
 <style>
-  #map {
-    height: 800px;
-  }
+#map {
+  height: 800px;
+}
 </style>

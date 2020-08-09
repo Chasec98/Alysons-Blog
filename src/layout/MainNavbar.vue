@@ -30,9 +30,7 @@
               <md-list-item to="/">
                 <i class="material-icons">account_circle</i>
                 <p>Home</p>
-                <md-tooltip md-direction="bottom"
-                  >Go back home</md-tooltip
-                >
+                <md-tooltip md-direction="bottom">Go back home</md-tooltip>
               </md-list-item>
               <md-list-item to="/posts">
                 <i class="material-icons">library_books</i>

@@ -14,7 +14,7 @@
     <div class="main main-raised">
       <div class="section section-basic">
         <div v-for="data in posts.all" :key="data.id">
-        <post :post="data" />
+          <post :post="data" />
         </div>
         <v-pagination></v-pagination>
       </div>
@@ -23,7 +23,7 @@
 </template>
 <script>
 import post from "@/components/post.vue";
-import {mapState, mapActions, mapGetters} from 'vuex'
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "index",
   bodyClass: "index-page",
@@ -37,21 +37,19 @@ export default {
     }
   },
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
+  methods: {},
   computed: {
     headerStyle() {
       return {
         backgroundImage: `url(${this.image})`
       };
     },
-    ...mapState(['posts'])
+    ...mapState(["posts"])
   },
-  created(){
-    this.$store.dispatch('posts/getPosts')
+  created() {
+    this.$store.dispatch("posts/getPosts");
   }
 };
 </script>
