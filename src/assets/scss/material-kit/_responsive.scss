@@ -354,14 +354,9 @@
     }
   }
 
-  .index-page .brand h1 {
-    font-size: 4.5rem;
-  }
-
   .index-page .brand h3 {
     max-width: 500px;
     line-height: normal;
-    font-size: 1.5rem;
   }
 
   .nav-tabs {
@@ -373,7 +368,7 @@
   }
 }
 
-@media (max-width: 451px){
+@media (max-width: 451px) and (max-height: 840px), (max-width: 451px){
   .index-page .brand h1 {
     font-size: 4rem;
   }
@@ -385,19 +380,6 @@
   }
   h4 {
     font-size: 1rem;
-  }
-}
-
-@media (max-height: 840px){
-  .index-page .brand h1 {
-    font-size: 2rem;
-    margin: 0;
-  }
-
-  .index-page .brand h3 {
-    max-width: 500px;
-    line-height: normal;
-    font-size: 0.8rem;
   }
 }
 

@@ -10,7 +10,7 @@ const state = () => ({
 
 const actions = {
     getPosts ({ commit }){
-        db.collection("posts").orderBy("datetime").limit(10).get().then(res => {
+        db.collection("posts").orderBy("datetime", "desc").limit(10).get().then(res => {
             commit('setPosts',res.docs.map(doc => doc.data()))
         })
         db.collection('posts').get().then(res => {

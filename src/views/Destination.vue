@@ -18,6 +18,8 @@
 </template>
 <script>
 export default {
+  //maps api key: AIzaSyDv2iOcgUp2L1yKsqJdcQjBnEs2idJkGzA
+  //restrict access to this key in prod
   name: "index",
   bodyClass: "index-page",
   props: {
