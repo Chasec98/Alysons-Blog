@@ -8,7 +8,7 @@ import Destination from "./views/Destination.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const r =  new Router({
   routes: [
     {
       path: "/",
@@ -50,3 +50,12 @@ export default new Router({
     }
   }
 });
+
+r.afterEach((to) => {
+  gtag('config', 'G-SP9Y5Z5NNG', {
+    page_path: to.fullPath,
+    send_page_view: true,
+  });
+});
+
+export default r;
