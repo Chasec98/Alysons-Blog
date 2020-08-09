@@ -12,12 +12,31 @@
       </div>
     </parallax>
     <div class="main main-raised">
-      <div class="section section-basic"></div>
+        <GmapMap id="map" class="section section-basic"
+  :center="{lat:35, lng:-85}"
+  :zoom="5"
+  :options="{
+      mapTypeControl: false,
+      streetViewControl: false,
+    }"
+  map-type-id="terrain"
+>
+<GmapMarker
+    :key="data.id"
+    v-for="data in posts.all"
+    :position="convertLocation(data.location)"
+    :clickable="true"
+    :draggable="false"
+  />
+</GmapMap>
     </div>
   </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
+  //maps api key: AIzaSyDv2iOcgUp2L1yKsqJdcQjBnEs2idJkGzA
+  //restrict access to this key in prod
   name: "index",
   bodyClass: "index-page",
   props: {
@@ -27,15 +46,33 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      map: null
+    };
   },
-  methods: {},
+  methods: {
+    convertLocation(location){
+      return {
+        lat: location['ff'],
+        lng: location['df']
+      }
+    }
+  },
   computed: {
     headerStyle() {
       return {
         backgroundImage: `url(${this.image})`
       };
-    }
+    },
+    ...mapState(['posts'])
+  },
+  created() {
+    this.$store.dispatch('posts/getPosts')
   }
 };
 </script>
+<style>
+  #map {
+    height: 800px;
+  }
+</style>
