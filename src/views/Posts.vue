@@ -11,12 +11,12 @@
         </div>
       </div>
     </parallax>
-    <div class="main main-raised">
+    <div class="main main-raised posts">
       <div class="section section-basic">
         <div v-for="data in posts.all" :key="data.id">
           <post :post="data" />
         </div>
-        <v-pagination></v-pagination>
+        <v-pagination color="#3c7de6" :value="$store.state.posts.page" :length="numPages"></v-pagination>
       </div>
     </div>
   </div>
@@ -46,6 +46,9 @@ export default {
         backgroundImage: `url(${this.image})`
       };
     },
+    numPages() {
+      return Math.ceil(this.$store.state.posts.total / 10)
+    },
     ...mapState(["posts"])
   },
   created() {
@@ -53,3 +56,8 @@ export default {
   }
 };
 </script>
+<style>
+  .posts {
+    padding-top: 50px;
+  }
+</style>

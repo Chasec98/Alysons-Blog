@@ -51,6 +51,7 @@ const r =  new Router({
   }
 });
 
+//Google Analytics Page tracking
 r.afterEach((to) => {
   gtag('config', 'G-SP9Y5Z5NNG', {
     page_path: to.fullPath,

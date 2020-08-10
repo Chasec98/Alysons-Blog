@@ -25,7 +25,7 @@
       >
         <GmapMarker
           :key="data.id"
-          v-for="data in posts.all"
+          v-for="data in posts.locations"
           :position="convertLocation(data.location)"
           :clickable="true"
           :draggable="false"
@@ -69,7 +69,7 @@ export default {
     ...mapState(["posts"])
   },
   created() {
-    this.$store.dispatch("posts/getPosts");
+    this.$store.dispatch("posts/getLocations");
   }
 };
 </script>

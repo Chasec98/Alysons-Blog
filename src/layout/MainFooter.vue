@@ -5,7 +5,7 @@
     :data-background-color="backgroundColor"
   >
     <div class="container">
-      <div class="copyright">&copy; {{ year }}, designed by Chase Carter.</div>
+      <div class="copyright">&copy; {{ year }}, developed by Chase Carter.</div>
     </div>
   </footer>
 </template>

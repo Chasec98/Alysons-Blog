@@ -9,6 +9,7 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+//Material UI
 Vue.use(MaterialKit);
 
 //Google Maps

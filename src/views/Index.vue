@@ -22,7 +22,8 @@
         <div class="container text-center">
           <div class="title">
             <h1>This is real, this is me</h1>
-            <h4>
+            </div>
+            <p>
               Hi, Y’all! Aly here, a complete goofball from Toledo, Ohio, who
               moved away and fell in love with the gorgeous state of Michigan. I
               attend school in Grand Rapids and live a life full of crazy
@@ -47,8 +48,7 @@
               every time I upload a new blog post! This is real, this is me: a
               woman who was sick of waiting for life to happen, and decided to
               go out there and make my dreams my reality.
-            </h4>
-          </div>
+            </p>
         </div>
       </div>
     </div>
