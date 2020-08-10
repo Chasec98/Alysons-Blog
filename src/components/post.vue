@@ -19,7 +19,7 @@
       v-if="showMoreButton(post.body)"
       class="md-simple"
       @click="showMore(post)"
-      >Continue</md-button
+      >Continue Reading</md-button
     >
     <div v-if="post.showMore == true">
       <p

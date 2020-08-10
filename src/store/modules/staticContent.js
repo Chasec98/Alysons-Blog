@@ -13,7 +13,7 @@ const actions = {
       .doc("master")
       .get()
       .then(res => {
-        commit("setHomepage", res);
+        commit("setHomepage", res.data());
       });
   }
 };
