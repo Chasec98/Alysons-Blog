@@ -5,7 +5,7 @@ const state = () => ({
   all: [],
   page: 1,
   count: 10,
-  total: 0, 
+  total: 0,
   locations: []
 });
 
@@ -19,7 +19,11 @@ const actions = {
       .then(res => {
         commit(
           "setPosts",
-          res.docs.map(doc => doc.data())
+          res.docs.map(doc => {
+            let ret = doc.data()
+            ret.id = doc.id
+            return ret
+          })
         );
       });
     db.collection("posts")
@@ -28,10 +32,16 @@ const actions = {
         commit("setPostCount", res.size);
       });
   },
-  getLocations({ commit }){
-    db.collection("locations").where("visible","==",true).get().then(res => {
-      commit("setLocations", res.docs.map(doc => doc.data()))
-    })
+  getLocations({ commit }) {
+    db.collection("locations")
+      .where("visible", "==", true)
+      .get()
+      .then(res => {
+        commit(
+          "setLocations",
+          res.docs.map(doc => doc.data())
+        );
+      });
   }
 };
 
@@ -39,16 +49,13 @@ const getters = {};
 
 const mutations = {
   setPosts(state, posts) {
-    state.all = posts.map(v => ({
-      ...v,
-      showMore: false
-    }));
+    state.all = posts
   },
   setPostCount(state, postCount) {
     state.total = postCount;
   },
   setLocations(state, locations) {
-    state.locations = locations
+    state.locations = locations;
   }
 };
 

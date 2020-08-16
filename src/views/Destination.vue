@@ -44,7 +44,7 @@ export default {
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/top-destination.jpg")
+      default: "https://firebasestorage.googleapis.com/v0/b/alysons-blog.appspot.com/o/static_content%2Ftop-destination.jpg?alt=media&token=befb4501-2fa1-4817-9fba-8a0c0e93a200"
     }
   },
   data() {

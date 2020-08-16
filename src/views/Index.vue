@@ -5,9 +5,9 @@
         <div class="md-layout-item">
           <div class="image-wrapper">
             <div class="brand">
-              <h1>{{staticContent.homepage.title}}</h1>
+              <h1>{{ staticContent.homepage.title }}</h1>
               <h3>
-                {{staticContent.homepage.subtitle}}
+                {{ staticContent.homepage.subtitle }}
               </h3>
             </div>
           </div>
@@ -16,13 +16,17 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-basic">
-        <div class="container text-center" v-for="data in staticContent.homepage.body" :key="data.title" >
+        <div
+          class="container text-center"
+          v-for="data in staticContent.homepage.body"
+          :key="data.title"
+        >
           <div class="title">
-            <h1>{{data.title}}</h1>
-            </div>
-            <p>
-              {{data.body}}
-            </p>
+            <h1>{{ data.title }}</h1>
+          </div>
+          <p>
+            {{ data.body }}
+          </p>
         </div>
       </div>
     </div>
@@ -37,7 +41,7 @@ export default {
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/top.jpg")
+      default: "https://firebasestorage.googleapis.com/v0/b/alysons-blog.appspot.com/o/static_content%2Ftop.jpg?alt=media&token=89a26053-f278-4c8a-ac0e-557d6cb46343"
     }
   },
   data() {
@@ -51,8 +55,8 @@ export default {
       };
     },
     ...mapState(["staticContent"])
-  }, 
-  created(){
+  },
+  created() {
     this.$store.dispatch("staticContent/getHomepage");
   }
 };
