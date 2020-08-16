@@ -25,7 +25,7 @@
       >
         <GmapMarker
           :key="data.id"
-          v-for="data in posts.locations"
+          v-for="data in locations.all"
           :position="convertLocation(data.location)"
           :clickable="true"
           :draggable="false"
@@ -37,8 +37,6 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  //maps api key: AIzaSyDv2iOcgUp2L1yKsqJdcQjBnEs2idJkGzA
-  //restrict access to this key in prod
   name: "index",
   bodyClass: "index-page",
   props: {
@@ -66,10 +64,10 @@ export default {
         backgroundImage: `url(${this.image})`
       };
     },
-    ...mapState(["posts"])
+    ...mapState(["locations"])
   },
   created() {
-    this.$store.dispatch("posts/getLocations");
+    this.$store.dispatch("locations/getLocations");
   }
 };
 </script>

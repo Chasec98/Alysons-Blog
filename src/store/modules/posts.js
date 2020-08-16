@@ -5,16 +5,15 @@ const state = () => ({
   all: [],
   page: 1,
   count: 10,
-  total: 0,
-  locations: []
+  total: 0
 });
 
 const actions = {
-  getPosts({ commit }) {
+  getPosts({ commit, state }) {
     db.collection("posts")
       .where("visible", "==", true)
       .orderBy("datetime", "desc")
-      .limit(10)
+      .limit(state.count).startAt((state.count*state.page - state.count).toString())
       .get()
       .then(res => {
         commit(
@@ -31,17 +30,6 @@ const actions = {
       .then(res => {
         commit("setPostCount", res.size);
       });
-  },
-  getLocations({ commit }) {
-    db.collection("locations")
-      .where("visible", "==", true)
-      .get()
-      .then(res => {
-        commit(
-          "setLocations",
-          res.docs.map(doc => doc.data())
-        );
-      });
   }
 };
 
@@ -53,9 +41,6 @@ const mutations = {
   },
   setPostCount(state, postCount) {
     state.total = postCount;
-  },
-  setLocations(state, locations) {
-    state.locations = locations;
   }
 };
 
