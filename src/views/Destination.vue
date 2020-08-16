@@ -25,7 +25,7 @@
       >
         <GmapMarker
           :key="data.id"
-          v-for="data in posts.all"
+          v-for="data in locations.all"
           :position="convertLocation(data.location)"
           :clickable="true"
           :draggable="false"
@@ -37,14 +37,12 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  //maps api key: AIzaSyDv2iOcgUp2L1yKsqJdcQjBnEs2idJkGzA
-  //restrict access to this key in prod
   name: "index",
   bodyClass: "index-page",
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/top-destination.jpg")
+      default: "https://firebasestorage.googleapis.com/v0/b/alysons-blog.appspot.com/o/static_content%2Ftop-destination.jpg?alt=media&token=befb4501-2fa1-4817-9fba-8a0c0e93a200"
     }
   },
   data() {
@@ -66,10 +64,10 @@ export default {
         backgroundImage: `url(${this.image})`
       };
     },
-    ...mapState(["posts"])
+    ...mapState(["locations"])
   },
   created() {
-    this.$store.dispatch("posts/getPosts");
+    this.$store.dispatch("locations/getLocations");
   }
 };
 </script>

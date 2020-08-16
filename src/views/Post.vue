@@ -5,7 +5,7 @@
         <div class="md-layout-item">
           <div class="image-wrapper">
             <div class="brand">
-              <h1>Posts</h1>
+              <h1>{{post.title}}</h1>
             </div>
           </div>
         </div>
@@ -13,35 +13,32 @@
     </parallax>
     <div class="main main-raised posts">
       <div class="section section-basic">
-        <div v-for="data in posts.all" :key="data.id">
-          <snippit :post="data" />
-        </div>
-        <v-pagination
-          color="#3c7de6"
-          :value="$store.state.posts.page"
-          :length="numPages"
-        ></v-pagination>
+          <post :post="post" />
       </div>
     </div>
   </div>
 </template>
 <script>
-import snippit from "@/components/snippit.vue";
+import post from "@/components/post.vue";
 import { mapState, mapActions } from "vuex";
+import firebase from "../plugins/firebase";
+const db = firebase.firestore();
 export default {
   name: "index",
   bodyClass: "index-page",
   components: {
-    snippit
+    post
   },
   props: {
     image: {
       type: String,
-      default: "https://firebasestorage.googleapis.com/v0/b/alysons-blog.appspot.com/o/static_content%2Ftop-post.jpg?alt=media&token=de45a2df-4436-4c64-8558-86fce0fd7a7b"
+      default: require("@/assets/img/top-post.jpg")
     }
   },
   data() {
-    return {};
+    return {
+      post: {}
+    };
   },
   methods: {},
   computed: {
@@ -49,14 +46,20 @@ export default {
       return {
         backgroundImage: `url(${this.image})`
       };
-    },
-    numPages() {
-      return Math.ceil(this.$store.state.posts.total / 10);
-    },
-    ...mapState(["posts"])
+    }
   },
   created() {
-    this.$store.dispatch("posts/getPosts");
+    //This is all here to save a DB query
+    if (this.$store.state.posts.all == []){
+      this.post = this.$store.state.posts.all.filter(e => e.id == this.$route.params.id)[0]
+    }
+    else {
+      console.log('fallback to DB')
+      db.collection('posts').doc(this.$route.params.id).get().then(res => {
+        this.post = res.data()
+      })
+    }
+    //DB Magic stops here
   }
 };
 </script>
@@ -65,3 +68,8 @@ export default {
   padding-top: 50px;
 }
 </style>
+<!--
+post() {
+        return this.$store.state.posts.all.filter(e => e.id == this.$route.params.id)[0]
+    }
+-->

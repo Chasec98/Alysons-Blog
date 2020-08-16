@@ -1,14 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Index from "./views/Index.vue";
-import Posts from "./views/Posts.vue";
-import MainNavbar from "./layout/MainNavbar.vue";
-import MainFooter from "./layout/MainFooter.vue";
-import Destination from "./views/Destination.vue";
+import Index from "./views/Index";
+import Posts from "./views/Posts";
+import Post from "./views/Post";
+import MainNavbar from "./layout/MainNavbar";
+import MainFooter from "./layout/MainFooter";
+import Destination from "./views/Destination";
 
 Vue.use(Router);
 
-const r =  new Router({
+const r = new Router({
   routes: [
     {
       path: "/",
@@ -23,6 +24,15 @@ const r =  new Router({
       path: "/posts",
       name: "posts",
       components: { default: Posts, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/post/:id",
+      name: "post",
+      components: { default: Post, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -51,10 +61,11 @@ const r =  new Router({
   }
 });
 
-r.afterEach((to) => {
-  gtag('config', 'G-SP9Y5Z5NNG', {
+//Google Analytics Page tracking
+r.afterEach(to => {
+  gtag("config", "G-SP9Y5Z5NNG", {
     page_path: to.fullPath,
-    send_page_view: true,
+    send_page_view: true
   });
 });
 

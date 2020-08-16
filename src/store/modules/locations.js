@@ -2,25 +2,28 @@ import firebase from "../../plugins/firebase";
 const db = firebase.firestore();
 
 const state = () => ({
-  homepage: {}
+  all: []
 });
 
-const getters = {};
-
 const actions = {
-  getHomepage({ commit }) {
-    db.collection("static")
-      .doc("master")
+  getLocations({ commit }) {
+    db.collection("locations")
+      .where("visible", "==", true)
       .get()
       .then(res => {
-        commit("setHomepage", res.data());
+        commit(
+          "setLocations",
+          res.docs.map(doc => doc.data())
+        );
       });
   }
 };
 
+const getters = {};
+
 const mutations = {
-  setHomepage(state, data) {
-    state.homepage = data;
+  setLocations(state, locations) {
+    state.all = locations;
   }
 };
 

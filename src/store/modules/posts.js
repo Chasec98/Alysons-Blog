@@ -9,16 +9,20 @@ const state = () => ({
 });
 
 const actions = {
-  getPosts({ commit }) {
+  getPosts({ commit, state }) {
     db.collection("posts")
       .where("visible", "==", true)
       .orderBy("datetime", "desc")
-      .limit(10)
+      .limit(state.count).startAt((state.count*state.page - state.count).toString())
       .get()
       .then(res => {
         commit(
           "setPosts",
-          res.docs.map(doc => doc.data())
+          res.docs.map(doc => {
+            let ret = doc.data()
+            ret.id = doc.id
+            return ret
+          })
         );
       });
     db.collection("posts")
@@ -33,10 +37,7 @@ const getters = {};
 
 const mutations = {
   setPosts(state, posts) {
-    state.all = posts.map(v => ({
-      ...v,
-      showMore: false
-    }));
+    state.all = posts
   },
   setPostCount(state, postCount) {
     state.total = postCount;
