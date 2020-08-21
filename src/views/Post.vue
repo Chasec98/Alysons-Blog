@@ -50,11 +50,10 @@ export default {
   },
   created() {
     //This is all here to save a DB query
-    if (this.$store.state.posts.all == []){
+    if (this.$store.state.posts.all.length !== 0){
       this.post = this.$store.state.posts.all.filter(e => e.id == this.$route.params.id)[0]
     }
     else {
-      console.log('fallback to DB')
       db.collection('posts').doc(this.$route.params.id).get().then(res => {
         this.post = res.data()
       })
@@ -68,8 +67,3 @@ export default {
   padding-top: 50px;
 }
 </style>
-<!--
-post() {
-        return this.$store.state.posts.all.filter(e => e.id == this.$route.params.id)[0]
-    }
--->
