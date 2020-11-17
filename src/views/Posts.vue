@@ -20,6 +20,7 @@
           color="#3c7de6"
           :value="$store.state.posts.page"
           :length="numPages"
+          circle
         ></v-pagination>
       </div>
     </div>
@@ -63,5 +64,6 @@ export default {
 <style>
 .posts {
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 </style>

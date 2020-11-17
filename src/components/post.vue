@@ -5,6 +5,11 @@
       <span v-if="hasTag('travel')" class="badge badge-warning">Travel</span>
       <span v-if="hasTag('gv')" class="badge badge-info">Grand Valley</span>
     </div>
+    <v-carousel v-if="post.pictures" continuous cycle hide-delimiter-background :show-arrows="false">
+      <v-carousel-item v-for="picture in post.pictures" :key="picture" :src="picture">
+      </v-carousel-item>
+    </v-carousel>
+    <div class="fullBody">
     <p
         v-for="paragraph in post.body"
         :key="paragraph"
@@ -12,6 +17,7 @@
       >
         {{ paragraph }}
       </p>
+    </div>
   </v-container>
 </template>
 
@@ -51,5 +57,9 @@ export default {
 <style>
 .bodyText {
   text-indent: 5%;
+}
+.fullBody {
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 </style>

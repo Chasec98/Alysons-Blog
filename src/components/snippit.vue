@@ -7,7 +7,7 @@
       <span v-if="hasTag('travel')" class="badge badge-warning">Travel</span>
       <span v-if="hasTag('gv')" class="badge badge-info">Grand Valley</span>
     </div>
-    <p>
+    <p class="bodyText">
         {{getSnippit(post.body)}}
       </p>
     <md-button
@@ -55,3 +55,8 @@ export default {
     }
 }
 </script>
+<style>
+.bodyText {
+  text-indent: 5%;
+}
+</style>
